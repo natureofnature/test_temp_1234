@@ -12,7 +12,7 @@ from transformers import AutoTokenizer
 
 
 
-os.environ["ASCEND_RT_VISIBLE_DEVICES"]="0,1,2,3"
+os.environ["ASCEND_RT_VISIBLE_DEVICES"]="8,9,10,11,12,13,14,15"
  
 if __name__ == "__main__":
     torch.cuda.empty_cache()
