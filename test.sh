@@ -1,0 +1,1 @@
+bash run_chunked_prefill.sh  && bash run_gt.sh  && grep log_chunked.txt -rne "Generated" && echo "===" && grep log_gt.txt -rne "Generated" && echo "===" && grep -oP '(?<=for request).*' log_gt.txt | uniq  | grep -oP '(?<=: ).*' |sort | uniq 
