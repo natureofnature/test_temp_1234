@@ -23,7 +23,7 @@ if __name__ == "__main__":
     parser.add_argument('--bs', type=int, default=1)
     parser.add_argument('--model_path', type=str, default="/mnt/weight/deepseekv3-lite-base-latest")
     parser.add_argument('--tp', type=int, default=2)   # 4 to 8
-    parser.add_argument('--cp', type=int, default=4)   # 4 to 8
+    parser.add_argument('--cp', type=int, default=2)   # 4 to 8
     parser.add_argument('--profiler_dir', type=str, default=None)
     parser.add_argument('-p', '--profiling', action="store_true")
     parser.add_argument('--iter_times', type=int, default=1)
@@ -34,11 +34,11 @@ if __name__ == "__main__":
     def generate_odd_queue_string(length):
         return ' '.join(str(2*i + 1) for i in range(length))
  
-    base = 998
+    base = 991
     i = 0
     prompts = [
         #"The capital of France is Paris"*500 + ", and the president is ",
-        generate_odd_queue_string(base+1*i)+" " for i in range(1)
+        generate_odd_queue_string(base+3*i)+" " for i in range(50)
         #"Hello, my name is Tom, I am",
         #"The president of United States is",
         #"AI future is? What do you think about it? Can you give me some information or any thing you want?"
