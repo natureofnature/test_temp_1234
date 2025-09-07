@@ -34,15 +34,7 @@ if __name__ == "__main__":
     def generate_odd_queue_string(length):
         return ' '.join(str(2*i + 1) for i in range(length))
  
-    base = 999
-    i = 0
-    prompts = [
-        #"The capital of France is Paris"*500 + ", and the president is ",
-        generate_odd_queue_string(base+1*i)+" " for i in range(1)
-        #"Hello, my name is Tom, I am",
-        #"The president of United States is",
-        #"AI future is? What do you think about it? Can you give me some information or any thing you want?"
-    ]
+    
  
     sampling_params = SamplingParams(temperature = 0.0, max_tokens=args.output_len)
     # sampling_params = SamplingParams(temperature = 0.8, top_p = 0.95, max_tokens=args.output_len)
@@ -56,30 +48,36 @@ if __name__ == "__main__":
               enable_expert_parallel=True,
               enable_chunked_prefill=True,    # 待确认是否生效
               enable_sequence_parallel=True,
-              max_num_batched_tokens=1300, #16384  1024  74000  131072
+              max_num_batched_tokens=1024, #16384  1024  74000  131072
               max_model_len=4096,   # 128K  131072
               additional_config={"ascend_scheduler_config": {"enabled": True}},
               block_size=128,
               gpu_memory_utilization=0.9  # 默认值0.9
               )
  
-    t0 = time.time()
-    for _ in range(args.iter_times):
-        outputs = llm.generate(prompts, sampling_params)
-    t1 = time.time()
-    print(f"TTFT: {(t1 - t0) * 1000 / (args.iter_times * args.bs)} ms")
- 
-    for i, output in enumerate(outputs):
-        prompt = output.prompt
-        generated_text = output.outputs[0].text
-        # print(
-        #     f"req_num: {i}\nGenerated text: {generated_text!r}"
-        # )
-        prompt = prompt.split(" ")
-        print(
-            f"prompt:{prompt}\n"
-            f"req_num: {i}\n[{prompt[-10:]}] -> Generated text: {generated_text!r}\n"
-            f"Token ids: {output.outputs[0].token_ids}\n"
-        )
- 
+    base = 999
+    for i in range(1):
+        prompts = [
+            generate_odd_queue_string(base+i)+" " 
+        ]
+        t0 = time.time()
+        for _ in range(args.iter_times):
+            outputs = llm.generate(prompts, sampling_params)
+        t1 = time.time()
+        print(f"TTFT: {(t1 - t0) * 1000 / (args.iter_times * args.bs)} ms")
+     
+        for i, output in enumerate(outputs):
+            prompt = output.prompt
+            generated_text = output.outputs[0].text
+            # print(
+            #     f"req_num: {i}\nGenerated text: {generated_text!r}"
+            # )
+            prompt = prompt.split(" ")
+            print(
+                #f"prompt:{prompt}\n"
+                #f"req_num: {i}\n[{prompt}] -> Generated text: {generated_text!r}\n"
+                f"req_num: {i}\n[{prompt[-5:]}] -> Generated text: {generated_text!r}\n"
+                f"Token ids: {output.outputs[0].token_ids}\n"
+            )
+     
     print("end.")

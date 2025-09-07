@@ -1,0 +1,1068 @@
+INFO 09-07 00:29:10 [__init__.py:36] Available plugins for group vllm.platform_plugins:
+INFO 09-07 00:29:10 [__init__.py:38] - ascend -> vllm_ascend:register
+INFO 09-07 00:29:10 [__init__.py:41] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-07 00:29:10 [__init__.py:232] Platform plugin ascend is activated
+WARNING 09-07 00:29:11 [_custom_ops.py:20] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+INFO 09-07 00:29:12 [importing.py:63] Triton not installed or not compatible; certain GPU-related functions will not be available.
+WARNING 09-07 00:29:12 [registry.py:464] Model architecture DeepSeekMTPModel is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_mtp:CustomDeepSeekMTP.
+WARNING 09-07 00:29:12 [registry.py:464] Model architecture Qwen2VLForConditionalGeneration is already registered, and will be overwritten by the new model class vllm_ascend.models.qwen2_vl:AscendQwen2VLForConditionalGeneration.
+WARNING 09-07 00:29:12 [registry.py:464] Model architecture Qwen2_5_VLForConditionalGeneration is already registered, and will be overwritten by the new model class vllm_ascend.models.qwen2_5_vl:AscendQwen2_5_VLForConditionalGeneration.
+WARNING 09-07 00:29:12 [registry.py:464] Model architecture DeepseekV2ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v2:CustomDeepseekV2ForCausalLM.
+WARNING 09-07 00:29:12 [registry.py:464] Model architecture DeepseekV3ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v3:CustomDeepseekV3ForCausalLM.
+WARNING 09-07 00:29:12 [registry.py:464] Model architecture Qwen3MoeForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.qwen3_moe:CustomQwen3MoeForCausalLM.
+WARNING 09-07 00:29:12 [registry.py:464] Model architecture Qwen3ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.qwen3:CustomQwen3ForCausalLM.
+INFO 09-07 00:29:12 [utils.py:326] non-default args: {'model': '/mnt/weight/deepseekv3-lite-base-latest', 'trust_remote_code': True, 'max_model_len': 4096, 'tensor_parallel_size': 2, 'context_parallel_size': 2, 'enable_sequence_parallel': True, 'enable_expert_parallel': True, 'block_size': 128, 'enable_prefix_caching': False, 'max_num_batched_tokens': 1024, 'disable_log_stats': True, 'enforce_eager': True, 'enable_chunked_prefill': True, 'additional_config': {'ascend_scheduler_config': {'enabled': True}}}
+INFO 09-07 00:29:12 [config.py:240] Replacing legacy 'type' key with 'rope_type'
+INFO 09-07 00:29:21 [__init__.py:742] Resolved architecture: DeepseekV3ForCausalLM
+INFO 09-07 00:29:21 [__init__.py:1774] Using max model len 4096
+INFO 09-07 00:29:21 [config.py:240] Replacing legacy 'type' key with 'rope_type'
+INFO 09-07 00:29:21 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=1024.
+INFO 09-07 00:29:21 [platform.py:156] Compilation disabled, using eager mode by default
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:22 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:22 [core.py:74] Initializing a V1 LLM engine (v0.1.dev8800+g376d98484.d20250901) with config: model='/mnt/weight/deepseekv3-lite-base-latest', speculative_config=None, tokenizer='/mnt/weight/deepseekv3-lite-base-latest', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=True, dtype=torch.float16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=True, kv_cache_dtype=auto, device_config=npu, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=/mnt/weight/deepseekv3-lite-base-latest, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, pooler_config=None, compilation_config={"level":0,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":["all"],"splitting_ops":null,"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":0,"use_cudagraph":true,"cudagraph_num_of_warmups":0,"cudagraph_capture_sizes":[],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":0,"local_cache_dir":null}
+[1;36m(EngineCore_0 pid=344183)[0;0m WARNING 09-07 00:29:22 [multiproc_worker_utils.py:273] Reducing Torch parallelism from 640 threads to 1 to avoid unnecessary CPU contention. Set OMP_NUM_THREADS in the external environment to tune this value as needed.
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:22 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1, 2, 3], buffer_handle=(4, 16777216, 10, 'psm_69c67b75'), local_subscribe_addr='ipc:///tmp/e291ebfe-c0fb-44b4-9313-2b11f825f733', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344190)[0;0m INFO 09-07 00:29:26 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_04652505'), local_subscribe_addr='ipc:///tmp/7484a787-5af6-41b2-a37b-5fddbc27552a', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344195)[0;0m INFO 09-07 00:29:27 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_7d5fbc31'), local_subscribe_addr='ipc:///tmp/1cfbc5a9-6028-441b-a775-4d6368523bc2', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344205)[0;0m INFO 09-07 00:29:27 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_8b127e2e'), local_subscribe_addr='ipc:///tmp/1a9cda68-c303-4ea3-b613-81c5f2204d2e', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344200)[0;0m INFO 09-07 00:29:27 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_902ba22b'), local_subscribe_addr='ipc:///tmp/54d9e121-b294-4809-9dcf-0dc87f2fdac1', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344190)[0;0m INFO 09-07 00:29:28 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[1], buffer_handle=(1, 4194304, 6, 'psm_37008615'), local_subscribe_addr='ipc:///tmp/dbcbf97f-5053-49be-a3e8-fc2761e39c55', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344200)[0;0m INFO 09-07 00:29:28 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[1], buffer_handle=(1, 4194304, 6, 'psm_f3d96606'), local_subscribe_addr='ipc:///tmp/da211fd3-54d7-4ac6-b065-2a77c5d3d6b4', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344190)[0;0m INFO 09-07 00:29:28 [parallel_state.py:1163] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0, CP rank 0
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344195)[0;0m INFO 09-07 00:29:28 [parallel_state.py:1163] rank 1 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1, EP rank 1, CP rank 0
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344205)[0;0m INFO 09-07 00:29:28 [parallel_state.py:1163] rank 3 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1, EP rank 3, CP rank 1
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344200)[0;0m INFO 09-07 00:29:28 [parallel_state.py:1163] rank 2 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 2, CP rank 1
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344190)[0;0m INFO 09-07 00:29:28 [model_runner_v1.py:2403] Starting to load model /mnt/weight/deepseekv3-lite-base-latest...
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344205)[0;0m INFO 09-07 00:29:28 [model_runner_v1.py:2403] Starting to load model /mnt/weight/deepseekv3-lite-base-latest...
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344200)[0;0m INFO 09-07 00:29:28 [model_runner_v1.py:2403] Starting to load model /mnt/weight/deepseekv3-lite-base-latest...
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344195)[0;0m INFO 09-07 00:29:28 [model_runner_v1.py:2403] Starting to load model /mnt/weight/deepseekv3-lite-base-latest...
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344195)[0;0m INFO 09-07 00:29:28 [layer.py:828] [EP Rank 1/4] Expert parallelism is enabled. Local/global number of experts: 18/72. Experts local to global index map: 0->18, 1->19, 2->20, 3->21, 4->22, 5->23, 6->24, 7->25, 8->26, 9->27, 10->28, 11->29, 12->30, 13->31, 14->32, 15->33, 16->34, 17->35.
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344190)[0;0m INFO 09-07 00:29:28 [layer.py:828] [EP Rank 0/4] Expert parallelism is enabled. Local/global number of experts: 18/72. Experts local to global index map: 0->0, 1->1, 2->2, 3->3, 4->4, 5->5, 6->6, 7->7, 8->8, 9->9, 10->10, 11->11, 12->12, 13->13, 14->14, 15->15, 16->16, 17->17.
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344205)[0;0m INFO 09-07 00:29:29 [layer.py:828] [EP Rank 3/4] Expert parallelism is enabled. Local/global number of experts: 18/72. Experts local to global index map: 0->54, 1->55, 2->56, 3->57, 4->58, 5->59, 6->60, 7->61, 8->62, 9->63, 10->64, 11->65, 12->66, 13->67, 14->68, 15->69, 16->70, 17->71.
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344200)[0;0m INFO 09-07 00:29:29 [layer.py:828] [EP Rank 2/4] Expert parallelism is enabled. Local/global number of experts: 18/72. Experts local to global index map: 0->36, 1->37, 2->38, 3->39, 4->40, 5->41, 6->42, 7->43, 8->44, 9->45, 10->46, 11->47, 12->48, 13->49, 14->50, 15->51, 16->52, 17->53.
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344195)[0;0m INFO 09-07 00:29:37 [default_loader.py:267] Loading weights took 8.15 seconds
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344200)[0;0m INFO 09-07 00:29:38 [default_loader.py:267] Loading weights took 8.23 seconds
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344195)[0;0m INFO 09-07 00:29:38 [model_runner_v1.py:2433] Loading model weights took 14.6601 GB
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344205)[0;0m INFO 09-07 00:29:38 [default_loader.py:267] Loading weights took 8.89 seconds
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344190)[0;0m INFO 09-07 00:29:38 [default_loader.py:267] Loading weights took 9.23 seconds
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344200)[0;0m INFO 09-07 00:29:39 [model_runner_v1.py:2433] Loading model weights took 14.6601 GB
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344205)[0;0m INFO 09-07 00:29:39 [model_runner_v1.py:2433] Loading model weights took 14.6601 GB
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344190)[0;0m INFO 09-07 00:29:39 [model_runner_v1.py:2433] Loading model weights took 14.6601 GB
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344190)[0;0m INFO 09-07 00:29:42 [worker_v1.py:185] Available memory: 41364470784, total memory: 65787658240
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344205)[0;0m INFO 09-07 00:29:42 [worker_v1.py:185] Available memory: 41823674163, total memory: 65796046848
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP1 pid=344195)[0;0m INFO 09-07 00:29:42 [worker_v1.py:185] Available memory: 41809919795, total memory: 65796046848
+[1;36m(EngineCore_0 pid=344183)[0;0m [1;36m(VllmWorker TP0 pid=344200)[0;0m INFO 09-07 00:29:42 [worker_v1.py:185] Available memory: 41556044800, total memory: 65787658240
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:42 [kv_cache_utils.py:849] GPU KV cache size: 1,196,800 tokens
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:42 [kv_cache_utils.py:853] Maximum concurrency for 4,096 tokens per request: 1168.75x
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:42 [kv_cache_utils.py:849] GPU KV cache size: 1,209,728 tokens
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:42 [kv_cache_utils.py:853] Maximum concurrency for 4,096 tokens per request: 1181.38x
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:42 [kv_cache_utils.py:849] GPU KV cache size: 1,202,304 tokens
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:42 [kv_cache_utils.py:853] Maximum concurrency for 4,096 tokens per request: 1174.12x
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:42 [kv_cache_utils.py:849] GPU KV cache size: 1,210,112 tokens
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:42 [kv_cache_utils.py:853] Maximum concurrency for 4,096 tokens per request: 1181.75x
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:43 [core.py:215] init engine (profile, create kv cache, warmup model) took 3.28 seconds
+[1;36m(EngineCore_0 pid=344183)[0;0m WARNING 09-07 00:29:43 [core.py:109] Using configured V1 scheduler class vllm_ascend.core.scheduler.AscendScheduler. This scheduler interface is not public and compatibility may not be maintained.
+[1;36m(EngineCore_0 pid=344183)[0;0m INFO 09-07 00:29:43 [platform.py:156] Compilation disabled, using eager mode by default
+INFO 09-07 00:29:43 [llm.py:283] Supported_tasks: ['generate']
+TTFT: 651.301383972168 ms
+req_num: 0
+[['593', '595', '597', '599', '']] -> Generated text: '600'
+Token ids: [6391]
+
+TTFT: 177.20532417297363 ms
+req_num: 0
+[['595', '597', '599', '601', '']] -> Generated text: '601'
+Token ids: [19698]
+
+TTFT: 168.65897178649902 ms
+req_num: 0
+[['597', '599', '601', '603', '']] -> Generated text: '605'
+Token ids: [25641]
+
+TTFT: 176.98168754577637 ms
+req_num: 0
+[['599', '601', '603', '605', '']] -> Generated text: '607'
+Token ids: [26105]
+
+TTFT: 168.03836822509766 ms
+req_num: 0
+[['601', '603', '605', '607', '']] -> Generated text: ' '
+Token ids: [223]
+
+TTFT: 188.19737434387207 ms
+req_num: 0
+[['603', '605', '607', '609', '']] -> Generated text: '611'
+Token ids: [25340]
+
+TTFT: 175.1549243927002 ms
+req_num: 0
+[['605', '607', '609', '611', '']] -> Generated text: '613'
+Token ids: [27028]
+
+TTFT: 181.2613010406494 ms
+req_num: 0
+[['607', '609', '611', '613', '']] -> Generated text: '615'
+Token ids: [27042]
+
+TTFT: 170.52054405212402 ms
+req_num: 0
+[['609', '611', '613', '615', '']] -> Generated text: '617'
+Token ids: [25945]
+
+TTFT: 175.77052116394043 ms
+req_num: 0
+[['611', '613', '615', '617', '']] -> Generated text: '619'
+Token ids: [28516]
+
+TTFT: 165.12632369995117 ms
+req_num: 0
+[['613', '615', '617', '619', '']] -> Generated text: '621'
+Token ids: [25753]
+
+TTFT: 187.44897842407227 ms
+req_num: 0
+[['615', '617', '619', '621', '']] -> Generated text: '623'
+Token ids: [28297]
+
+TTFT: 173.539400100708 ms
+req_num: 0
+[['617', '619', '621', '623', '']] -> Generated text: '625'
+Token ids: [20807]
+
+TTFT: 176.57780647277832 ms
+req_num: 0
+[['619', '621', '623', '625', '']] -> Generated text: '627'
+Token ids: [27517]
+
+TTFT: 163.64812850952148 ms
+req_num: 0
+[['621', '623', '625', '627', '']] -> Generated text: '629'
+Token ids: [29063]
+
+TTFT: 171.6306209564209 ms
+req_num: 0
+[['623', '625', '627', '629', '']] -> Generated text: '631'
+Token ids: [26151]
+
+TTFT: 164.0796661376953 ms
+req_num: 0
+[['625', '627', '629', '631', '']] -> Generated text: '633'
+Token ids: [26352]
+
+TTFT: 207.67474174499512 ms
+req_num: 0
+[['627', '629', '631', '633', '']] -> Generated text: '635'
+Token ids: [27772]
+
+TTFT: 198.11224937438965 ms
+req_num: 0
+[['629', '631', '633', '635', '']] -> Generated text: '637'
+Token ids: [27308]
+
+TTFT: 197.9506015777588 ms
+req_num: 0
+[['631', '633', '635', '637', '']] -> Generated text: '639'
+Token ids: [26661]
+
+TTFT: 194.73862648010254 ms
+req_num: 0
+[['633', '635', '637', '639', '']] -> Generated text: '641'
+Token ids: [26091]
+
+TTFT: 249.55368041992188 ms
+req_num: 0
+[['635', '637', '639', '641', '']] -> Generated text: '643'
+Token ids: [28380]
+
+TTFT: 264.27268981933594 ms
+req_num: 0
+[['637', '639', '641', '643', '']] -> Generated text: '645'
+Token ids: [27151]
+
+TTFT: 255.3262710571289 ms
+req_num: 0
+[['639', '641', '643', '645', '']] -> Generated text: '645'
+Token ids: [27151]
+
+TTFT: 255.67221641540527 ms
+req_num: 0
+[['641', '643', '645', '647', '']] -> Generated text: '649'
+Token ids: [28983]
+
+TTFT: 254.70280647277832 ms
+req_num: 0
+[['643', '645', '647', '649', '']] -> Generated text: '651'
+Token ids: [27665]
+
+TTFT: 254.0898323059082 ms
+req_num: 0
+[['645', '647', '649', '651', '']] -> Generated text: '653'
+Token ids: [26681]
+
+TTFT: 254.43458557128906 ms
+req_num: 0
+[['647', '649', '651', '653', '']] -> Generated text: '655'
+Token ids: [24974]
+
+TTFT: 250.2753734588623 ms
+req_num: 0
+[['649', '651', '653', '655', '']] -> Generated text: '657'
+Token ids: [28349]
+
+TTFT: 261.23523712158203 ms
+req_num: 0
+[['651', '653', '655', '657', '']] -> Generated text: '659'
+Token ids: [29666]
+
+TTFT: 259.8583698272705 ms
+req_num: 0
+[['653', '655', '657', '659', '']] -> Generated text: '661'
+Token ids: [27895]
+
+TTFT: 252.32481956481934 ms
+req_num: 0
+[['655', '657', '659', '661', '']] -> Generated text: '663'
+Token ids: [28968]
+
+TTFT: 249.74632263183594 ms
+req_num: 0
+[['657', '659', '661', '663', '']] -> Generated text: '665'
+Token ids: [28084]
+
+TTFT: 259.51671600341797 ms
+req_num: 0
+[['659', '661', '663', '665', '']] -> Generated text: '667'
+Token ids: [23529]
+
+TTFT: 252.05183029174805 ms
+req_num: 0
+[['661', '663', '665', '667', '']] -> Generated text: '669'
+Token ids: [29126]
+
+TTFT: 254.99510765075684 ms
+req_num: 0
+[['663', '665', '667', '669', '']] -> Generated text: '671'
+Token ids: [26612]
+
+TTFT: 251.53613090515137 ms
+req_num: 0
+[['665', '667', '669', '671', '']] -> Generated text: '673'
+Token ids: [28686]
+
+TTFT: 263.83066177368164 ms
+req_num: 0
+[['667', '669', '671', '673', '']] -> Generated text: '675'
+Token ids: [25905]
+
+TTFT: 253.9520263671875 ms
+req_num: 0
+[['669', '671', '673', '675', '']] -> Generated text: '677'
+Token ids: [28840]
+
+TTFT: 255.10048866271973 ms
+req_num: 0
+[['671', '673', '675', '677', '']] -> Generated text: '679'
+Token ids: [28897]
+
+TTFT: 248.8710880279541 ms
+req_num: 0
+[['673', '675', '677', '679', '']] -> Generated text: '681'
+Token ids: [29037]
+
+TTFT: 260.7383728027344 ms
+req_num: 0
+[['675', '677', '679', '681', '']] -> Generated text: '683'
+Token ids: [30217]
+
+TTFT: 250.65112113952637 ms
+req_num: 0
+[['677', '679', '681', '683', '']] -> Generated text: '685'
+Token ids: [28769]
+
+TTFT: 252.69556045532227 ms
+req_num: 0
+[['679', '681', '683', '685', '']] -> Generated text: '687'
+Token ids: [28701]
+
+TTFT: 249.21941757202148 ms
+req_num: 0
+[['681', '683', '685', '687', '']] -> Generated text: '689'
+Token ids: [29795]
+
+TTFT: 259.69719886779785 ms
+req_num: 0
+[['683', '685', '687', '689', '']] -> Generated text: '691'
+Token ids: [29265]
+
+TTFT: 249.94540214538574 ms
+req_num: 0
+[['685', '687', '689', '691', '']] -> Generated text: '693'
+Token ids: [29627]
+
+TTFT: 241.41836166381836 ms
+req_num: 0
+[['687', '689', '691', '693', '']] -> Generated text: '691'
+Token ids: [29265]
+
+TTFT: 233.19721221923828 ms
+req_num: 0
+[['689', '691', '693', '695', '']] -> Generated text: '697'
+Token ids: [29842]
+
+TTFT: 246.24109268188477 ms
+req_num: 0
+[['691', '693', '695', '697', '']] -> Generated text: '699'
+Token ids: [27047]
+
+TTFT: 238.53635787963867 ms
+req_num: 0
+[['693', '695', '697', '699', '']] -> Generated text: '701'
+Token ids: [23600]
+
+TTFT: 245.2988624572754 ms
+req_num: 0
+[['695', '697', '699', '701', '']] -> Generated text: '703'
+Token ids: [26739]
+
+TTFT: 241.9886589050293 ms
+req_num: 0
+[['697', '699', '701', '703', '']] -> Generated text: '705'
+Token ids: [27191]
+
+TTFT: 248.11720848083496 ms
+req_num: 0
+[['699', '701', '703', '705', '']] -> Generated text: '707'
+Token ids: [25624]
+
+TTFT: 246.00601196289062 ms
+req_num: 0
+[['701', '703', '705', '707', '']] -> Generated text: '709'
+Token ids: [28077]
+
+TTFT: 244.51375007629395 ms
+req_num: 0
+[['703', '705', '707', '709', '']] -> Generated text: '711'
+Token ids: [26393]
+
+TTFT: 240.49043655395508 ms
+req_num: 0
+[['705', '707', '709', '711', '']] -> Generated text: '713'
+Token ids: [28404]
+
+TTFT: 244.87805366516113 ms
+req_num: 0
+[['707', '709', '711', '713', '']] -> Generated text: '715'
+Token ids: [27648]
+
+TTFT: 250.8254051208496 ms
+req_num: 0
+[['709', '711', '713', '715', '']] -> Generated text: '717'
+Token ids: [28405]
+
+TTFT: 251.6484260559082 ms
+req_num: 0
+[['711', '713', '715', '717', '']] -> Generated text: '719'
+Token ids: [28800]
+
+TTFT: 249.92847442626953 ms
+req_num: 0
+[['713', '715', '717', '719', '']] -> Generated text: '721'
+Token ids: [27836]
+
+TTFT: 257.5695514678955 ms
+req_num: 0
+[['715', '717', '719', '721', '']] -> Generated text: '723'
+Token ids: [28667]
+
+TTFT: 253.6182403564453 ms
+req_num: 0
+[['717', '719', '721', '723', '']] -> Generated text: '725'
+Token ids: [27897]
+
+TTFT: 254.1520595550537 ms
+req_num: 0
+[['719', '721', '723', '725', '']] -> Generated text: '727'
+Token ids: [28415]
+
+TTFT: 249.55511093139648 ms
+req_num: 0
+[['721', '723', '725', '727', '']] -> Generated text: '729'
+Token ids: [29094]
+
+TTFT: 253.81851196289062 ms
+req_num: 0
+[['723', '725', '727', '729', '']] -> Generated text: '731'
+Token ids: [29107]
+
+TTFT: 251.70516967773438 ms
+req_num: 0
+[['725', '727', '729', '731', '']] -> Generated text: '733'
+Token ids: [29032]
+
+TTFT: 251.82151794433594 ms
+req_num: 0
+[['727', '729', '731', '733', '']] -> Generated text: '735'
+Token ids: [29264]
+
+TTFT: 247.62916564941406 ms
+req_num: 0
+[['729', '731', '733', '735', '']] -> Generated text: '737'
+Token ids: [25784]
+
+TTFT: 260.0538730621338 ms
+req_num: 0
+[['731', '733', '735', '737', '']] -> Generated text: '739'
+Token ids: [30793]
+
+TTFT: 249.68934059143066 ms
+req_num: 0
+[['733', '735', '737', '739', '']] -> Generated text: '741'
+Token ids: [29573]
+
+TTFT: 245.75543403625488 ms
+req_num: 0
+[['735', '737', '739', '741', '']] -> Generated text: '743'
+Token ids: [29341]
+
+TTFT: 246.69146537780762 ms
+req_num: 0
+[['737', '739', '741', '743', '']] -> Generated text: '745'
+Token ids: [29444]
+
+TTFT: 247.2238540649414 ms
+req_num: 0
+[['739', '741', '743', '745', '']] -> Generated text: '747'
+Token ids: [29138]
+
+TTFT: 248.1536865234375 ms
+req_num: 0
+[['741', '743', '745', '747', '']] -> Generated text: '749'
+Token ids: [30423]
+
+TTFT: 248.3372688293457 ms
+req_num: 0
+[['743', '745', '747', '749', '']] -> Generated text: '749'
+Token ids: [30423]
+
+TTFT: 243.2701587677002 ms
+req_num: 0
+[['745', '747', '749', '751', '']] -> Generated text: '753'
+Token ids: [29658]
+
+TTFT: 248.58450889587402 ms
+req_num: 0
+[['747', '749', '751', '753', '']] -> Generated text: '755'
+Token ids: [27481]
+
+TTFT: 249.8154640197754 ms
+req_num: 0
+[['749', '751', '753', '755', '']] -> Generated text: '757'
+Token ids: [28997]
+
+TTFT: 248.1670379638672 ms
+req_num: 0
+[['751', '753', '755', '757', '']] -> Generated text: '759'
+Token ids: [31257]
+
+TTFT: 246.8092441558838 ms
+req_num: 0
+[['753', '755', '757', '759', '']] -> Generated text: '761'
+Token ids: [28892]
+
+TTFT: 244.24171447753906 ms
+req_num: 0
+[['755', '757', '759', '761', '']] -> Generated text: '771'
+Token ids: [29345]
+
+TTFT: 252.35462188720703 ms
+req_num: 0
+[['757', '759', '761', '763', '']] -> Generated text: '765'
+Token ids: [28782]
+
+TTFT: 250.3659725189209 ms
+req_num: 0
+[['759', '761', '763', '765', '']] -> Generated text: '767'
+Token ids: [29597]
+
+TTFT: 244.77815628051758 ms
+req_num: 0
+[['761', '763', '765', '767', '']] -> Generated text: '769'
+Token ids: [31142]
+
+TTFT: 239.25304412841797 ms
+req_num: 0
+[['763', '765', '767', '769', '']] -> Generated text: '771'
+Token ids: [29345]
+
+TTFT: 251.51753425598145 ms
+req_num: 0
+[['765', '767', '769', '771', '']] -> Generated text: '772'
+Token ids: [29571]
+
+TTFT: 249.91798400878906 ms
+req_num: 0
+[['767', '769', '771', '773', '']] -> Generated text: '775'
+Token ids: [28409]
+
+TTFT: 244.34709548950195 ms
+req_num: 0
+[['769', '771', '773', '775', '']] -> Generated text: '777'
+Token ids: [22199]
+
+TTFT: 244.4155216217041 ms
+req_num: 0
+[['771', '773', '775', '777', '']] -> Generated text: '779'
+Token ids: [29899]
+
+TTFT: 248.52871894836426 ms
+req_num: 0
+[['773', '775', '777', '779', '']] -> Generated text: '781'
+Token ids: [29723]
+
+TTFT: 250.31757354736328 ms
+req_num: 0
+[['775', '777', '779', '781', '']] -> Generated text: '783'
+Token ids: [31098]
+
+TTFT: 243.4396743774414 ms
+req_num: 0
+[['777', '779', '781', '783', '']] -> Generated text: '784'
+Token ids: [29496]
+
+TTFT: 244.27556991577148 ms
+req_num: 0
+[['779', '781', '783', '785', '']] -> Generated text: '787'
+Token ids: [28556]
+
+TTFT: 251.95622444152832 ms
+req_num: 0
+[['781', '783', '785', '787', '']] -> Generated text: '789'
+Token ids: [25744]
+
+TTFT: 249.4354248046875 ms
+req_num: 0
+[['783', '785', '787', '789', '']] -> Generated text: '791'
+Token ids: [30915]
+
+TTFT: 243.2997226715088 ms
+req_num: 0
+[['785', '787', '789', '791', '']] -> Generated text: '793'
+Token ids: [31601]
+
+TTFT: 246.98877334594727 ms
+req_num: 0
+[['787', '789', '791', '793', '']] -> Generated text: '795'
+Token ids: [31554]
+
+TTFT: 247.8487491607666 ms
+req_num: 0
+[['789', '791', '793', '795', '']] -> Generated text: '797'
+Token ids: [31273]
+
+TTFT: 249.69172477722168 ms
+req_num: 0
+[['791', '793', '795', '797', '']] -> Generated text: '799'
+Token ids: [28002]
+
+TTFT: 244.37451362609863 ms
+req_num: 0
+[['793', '795', '797', '799', '']] -> Generated text: '800'
+Token ids: [6884]
+
+TTFT: 244.69327926635742 ms
+req_num: 0
+[['795', '797', '799', '801', '']] -> Generated text: '803'
+Token ids: [26838]
+
+TTFT: 254.89306449890137 ms
+req_num: 0
+[['797', '799', '801', '803', '']] -> Generated text: '805'
+Token ids: [27121]
+
+TTFT: 250.50020217895508 ms
+req_num: 0
+[['799', '801', '803', '805', '']] -> Generated text: '807'
+Token ids: [29872]
+
+TTFT: 246.22011184692383 ms
+req_num: 0
+[['801', '803', '805', '807', '']] -> Generated text: '808'
+Token ids: [22073]
+
+TTFT: 244.3230152130127 ms
+req_num: 0
+[['803', '805', '807', '809', '']] -> Generated text: '811'
+Token ids: [28007]
+
+TTFT: 249.98092651367188 ms
+req_num: 0
+[['805', '807', '809', '811', '']] -> Generated text: '813'
+Token ids: [29722]
+
+TTFT: 251.8467903137207 ms
+req_num: 0
+[['807', '809', '811', '813', '']] -> Generated text: '815'
+Token ids: [29254]
+
+TTFT: 248.10075759887695 ms
+req_num: 0
+[['809', '811', '813', '815', '']] -> Generated text: '817'
+Token ids: [30615]
+
+TTFT: 254.94670867919922 ms
+req_num: 0
+[['811', '813', '815', '817', '']] -> Generated text: '819'
+Token ids: [29245]
+
+TTFT: 261.1043453216553 ms
+req_num: 0
+[['813', '815', '817', '819', '']] -> Generated text: '821'
+Token ids: [29359]
+
+TTFT: 259.57632064819336 ms
+req_num: 0
+[['815', '817', '819', '821', '']] -> Generated text: '823'
+Token ids: [31190]
+
+TTFT: 257.3273181915283 ms
+req_num: 0
+[['817', '819', '821', '823', '']] -> Generated text: '825'
+Token ids: [28400]
+
+TTFT: 259.3982219696045 ms
+req_num: 0
+[['819', '821', '823', '825', '']] -> Generated text: '827'
+Token ids: [31771]
+
+TTFT: 262.8293037414551 ms
+req_num: 0
+[['821', '823', '825', '827', '']] -> Generated text: '829'
+Token ids: [31179]
+
+TTFT: 258.1369876861572 ms
+req_num: 0
+[['823', '825', '827', '829', '']] -> Generated text: '831'
+Token ids: [31707]
+
+TTFT: 255.9802532196045 ms
+req_num: 0
+[['825', '827', '829', '831', '']] -> Generated text: '833'
+Token ids: [27437]
+
+TTFT: 255.45454025268555 ms
+req_num: 0
+[['827', '829', '831', '833', '']] -> Generated text: '835'
+Token ids: [30432]
+
+TTFT: 268.2502269744873 ms
+req_num: 0
+[['829', '831', '833', '835', '']] -> Generated text: '837'
+Token ids: [32383]
+
+TTFT: 256.69240951538086 ms
+req_num: 0
+[['831', '833', '835', '837', '']] -> Generated text: '839'
+Token ids: [30984]
+
+TTFT: 251.28412246704102 ms
+req_num: 0
+[['833', '835', '837', '839', '']] -> Generated text: '841'
+Token ids: [30569]
+
+TTFT: 250.7951259613037 ms
+req_num: 0
+[['835', '837', '839', '841', '']] -> Generated text: '833'
+Token ids: [27437]
+
+TTFT: 261.4283561706543 ms
+req_num: 0
+[['837', '839', '841', '843', '']] -> Generated text: '845'
+Token ids: [31066]
+
+TTFT: 258.58497619628906 ms
+req_num: 0
+[['839', '841', '843', '845', '']] -> Generated text: '847'
+Token ids: [31800]
+
+TTFT: 256.17003440856934 ms
+req_num: 0
+[['841', '843', '845', '847', '']] -> Generated text: '849'
+Token ids: [31783]
+
+TTFT: 264.51635360717773 ms
+req_num: 0
+[['843', '845', '847', '849', '']] -> Generated text: '851'
+Token ids: [30733]
+
+TTFT: 259.9043846130371 ms
+req_num: 0
+[['845', '847', '849', '851', '']] -> Generated text: '853'
+Token ids: [30910]
+
+TTFT: 260.331392288208 ms
+req_num: 0
+[['847', '849', '851', '853', '']] -> Generated text: '855'
+Token ids: [30590]
+
+TTFT: 258.648157119751 ms
+req_num: 0
+[['849', '851', '853', '855', '']] -> Generated text: '857'
+Token ids: [27521]
+
+TTFT: 266.1154270172119 ms
+req_num: 0
+[['851', '853', '855', '857', '']] -> Generated text: '859'
+Token ids: [32770]
+
+TTFT: 257.0979595184326 ms
+req_num: 0
+[['853', '855', '857', '859', '']] -> Generated text: '861'
+Token ids: [30279]
+
+TTFT: 256.4888000488281 ms
+req_num: 0
+[['855', '857', '859', '861', '']] -> Generated text: '863'
+Token ids: [30625]
+
+TTFT: 255.04374504089355 ms
+req_num: 0
+[['857', '859', '861', '863', '']] -> Generated text: '865'
+Token ids: [31775]
+
+TTFT: 260.983943939209 ms
+req_num: 0
+[['859', '861', '863', '865', '']] -> Generated text: '867'
+Token ids: [31602]
+
+TTFT: 257.3883533477783 ms
+req_num: 0
+[['861', '863', '865', '867', '']] -> Generated text: '869'
+Token ids: [32945]
+
+TTFT: 259.1586112976074 ms
+req_num: 0
+[['863', '865', '867', '869', '']] -> Generated text: '871'
+Token ids: [31208]
+
+TTFT: 255.83171844482422 ms
+req_num: 0
+[['865', '867', '869', '871', '']] -> Generated text: '873'
+Token ids: [31869]
+
+TTFT: 263.6566162109375 ms
+req_num: 0
+[['867', '869', '871', '873', '']] -> Generated text: '875'
+Token ids: [25434]
+
+TTFT: 257.05862045288086 ms
+req_num: 0
+[['869', '871', '873', '875', '']] -> Generated text: '877'
+Token ids: [31272]
+
+TTFT: 261.34753227233887 ms
+req_num: 0
+[['871', '873', '875', '877', '']] -> Generated text: '879'
+Token ids: [32393]
+
+TTFT: 256.53696060180664 ms
+req_num: 0
+[['873', '875', '877', '879', '']] -> Generated text: '881'
+Token ids: [31799]
+
+TTFT: 263.31162452697754 ms
+req_num: 0
+[['875', '877', '879', '881', '']] -> Generated text: '883'
+Token ids: [32718]
+
+TTFT: 257.97414779663086 ms
+req_num: 0
+[['877', '879', '881', '883', '']] -> Generated text: '885'
+Token ids: [31353]
+
+TTFT: 258.5775852203369 ms
+req_num: 0
+[['879', '881', '883', '885', '']] -> Generated text: '887'
+Token ids: [32736]
+
+TTFT: 253.55291366577148 ms
+req_num: 0
+[['881', '883', '885', '887', '']] -> Generated text: '889'
+Token ids: [29672]
+
+TTFT: 259.2000961303711 ms
+req_num: 0
+[['883', '885', '887', '889', '']] -> Generated text: '891'
+Token ids: [31444]
+
+TTFT: 257.75814056396484 ms
+req_num: 0
+[['885', '887', '889', '891', '']] -> Generated text: '893'
+Token ids: [32908]
+
+TTFT: 257.14802742004395 ms
+req_num: 0
+[['887', '889', '891', '893', '']] -> Generated text: '895'
+Token ids: [30931]
+
+TTFT: 253.91697883605957 ms
+req_num: 0
+[['889', '891', '893', '895', '']] -> Generated text: '897'
+Token ids: [31146]
+
+TTFT: 263.3626461029053 ms
+req_num: 0
+[['891', '893', '895', '897', '']] -> Generated text: '899'
+Token ids: [28103]
+
+TTFT: 263.1707191467285 ms
+req_num: 0
+[['893', '895', '897', '899', '']] -> Generated text: '901'
+Token ids: [25622]
+
+TTFT: 259.04226303100586 ms
+req_num: 0
+[['895', '897', '899', '901', '']] -> Generated text: '903'
+Token ids: [29834]
+
+TTFT: 258.8770389556885 ms
+req_num: 0
+[['897', '899', '901', '903', '']] -> Generated text: '905'
+Token ids: [28597]
+
+TTFT: 261.35730743408203 ms
+req_num: 0
+[['899', '901', '903', '905', '']] -> Generated text: '907'
+Token ids: [29923]
+
+TTFT: 258.4254741668701 ms
+req_num: 0
+[['901', '903', '905', '907', '']] -> Generated text: '909'
+Token ids: [28614]
+
+TTFT: 255.42283058166504 ms
+req_num: 0
+[['903', '905', '907', '909', '']] -> Generated text: '911'
+Token ids: [24465]
+
+TTFT: 260.87427139282227 ms
+req_num: 0
+[['905', '907', '909', '911', '']] -> Generated text: '912'
+Token ids: [28622]
+
+TTFT: 262.6798152923584 ms
+req_num: 0
+[['907', '909', '911', '913', '']] -> Generated text: '915'
+Token ids: [30724]
+
+TTFT: 260.19763946533203 ms
+req_num: 0
+[['909', '911', '913', '915', '']] -> Generated text: '917'
+Token ids: [30944]
+
+TTFT: 258.1145763397217 ms
+req_num: 0
+[['911', '913', '915', '917', '']] -> Generated text: '919'
+Token ids: [30545]
+
+TTFT: 257.8451633453369 ms
+req_num: 0
+[['913', '915', '917', '919', '']] -> Generated text: '921'
+Token ids: [30155]
+
+TTFT: 261.8100643157959 ms
+req_num: 0
+[['915', '917', '919', '921', '']] -> Generated text: '923'
+Token ids: [31225]
+
+TTFT: 255.98740577697754 ms
+req_num: 0
+[['917', '919', '921', '923', '']] -> Generated text: '925'
+Token ids: [29861]
+
+TTFT: 251.49917602539062 ms
+req_num: 0
+[['919', '921', '923', '925', '']] -> Generated text: '927'
+Token ids: [32767]
+
+TTFT: 259.9518299102783 ms
+req_num: 0
+[['921', '923', '925', '927', '']] -> Generated text: '929'
+Token ids: [31629]
+
+TTFT: 254.44388389587402 ms
+req_num: 0
+[['923', '925', '927', '929', '']] -> Generated text: '931'
+Token ids: [31780]
+
+TTFT: 255.65814971923828 ms
+req_num: 0
+[['925', '927', '929', '931', '']] -> Generated text: '933'
+Token ids: [30561]
+
+TTFT: 252.86507606506348 ms
+req_num: 0
+[['927', '929', '931', '933', '']] -> Generated text: '935'
+Token ids: [32276]
+
+TTFT: 262.2804641723633 ms
+req_num: 0
+[['929', '931', '933', '935', '']] -> Generated text: '937'
+Token ids: [30145]
+
+TTFT: 257.5187683105469 ms
+req_num: 0
+[['931', '933', '935', '937', '']] -> Generated text: '939'
+Token ids: [31550]
+
+TTFT: 258.47864151000977 ms
+req_num: 0
+[['933', '935', '937', '939', '']] -> Generated text: '941'
+Token ids: [32648]
+
+TTFT: 255.87105751037598 ms
+req_num: 0
+[['935', '937', '939', '941', '']] -> Generated text: '943'
+Token ids: [32761]
+
+TTFT: 264.789342880249 ms
+req_num: 0
+[['937', '939', '941', '943', '']] -> Generated text: '945'
+Token ids: [31460]
+
+TTFT: 265.0156021118164 ms
+req_num: 0
+[['939', '941', '943', '945', '']] -> Generated text: '947'
+Token ids: [32728]
+
+TTFT: 258.43191146850586 ms
+req_num: 0
+[['941', '943', '945', '947', '']] -> Generated text: '949'
+Token ids: [32490]
+
+TTFT: 256.502628326416 ms
+req_num: 0
+[['943', '945', '947', '949', '']] -> Generated text: '951'
+Token ids: [29744]
+
+TTFT: 264.9073600769043 ms
+req_num: 0
+[['945', '947', '949', '951', '']] -> Generated text: '953'
+Token ids: [33002]
+
+TTFT: 259.1562271118164 ms
+req_num: 0
+[['947', '949', '951', '953', '']] -> Generated text: '955'
+Token ids: [31906]
+
+TTFT: 261.9454860687256 ms
+req_num: 0
+[['949', '951', '953', '955', '']] -> Generated text: '957'
+Token ids: [33337]
+
+TTFT: 255.6135654449463 ms
+req_num: 0
+[['951', '953', '955', '957', '']] -> Generated text: '959'
+Token ids: [32716]
+
+TTFT: 260.603666305542 ms
+req_num: 0
+[['953', '955', '957', '959', '']] -> Generated text: '961'
+Token ids: [30089]
+
+TTFT: 258.21852684020996 ms
+req_num: 0
+[['955', '957', '959', '961', '']] -> Generated text: '963'
+Token ids: [31573]
+
+TTFT: 256.75296783447266 ms
+req_num: 0
+[['957', '959', '961', '963', '']] -> Generated text: '965'
+Token ids: [32079]
+
+TTFT: 257.5342655181885 ms
+req_num: 0
+[['959', '961', '963', '965', '']] -> Generated text: '967'
+Token ids: [32934]
+
+TTFT: 266.5395736694336 ms
+req_num: 0
+[['961', '963', '965', '967', '']] -> Generated text: '969'
+Token ids: [32123]
+
+TTFT: 262.2792720794678 ms
+req_num: 0
+[['963', '965', '967', '969', '']] -> Generated text: '971'
+Token ids: [31685]
+
+TTFT: 259.6859931945801 ms
+req_num: 0
+[['965', '967', '969', '971', '']] -> Generated text: '972'
+Token ids: [30997]
+
+TTFT: 260.03575325012207 ms
+req_num: 0
+[['967', '969', '971', '973', '']] -> Generated text: '975'
+Token ids: [30809]
+
+TTFT: 262.4223232269287 ms
+req_num: 0
+[['969', '971', '973', '975', '']] -> Generated text: '977'
+Token ids: [32262]
+
+TTFT: 264.6961212158203 ms
+req_num: 0
+[['971', '973', '975', '977', '']] -> Generated text: '979'
+Token ids: [31609]
+
+TTFT: 257.54475593566895 ms
+req_num: 0
+[['973', '975', '977', '979', '']] -> Generated text: '981'
+Token ids: [29024]
+
+TTFT: 264.82367515563965 ms
+req_num: 0
+[['975', '977', '979', '981', '']] -> Generated text: '983'
+Token ids: [31541]
+
+TTFT: 255.97047805786133 ms
+req_num: 0
+[['977', '979', '981', '983', '']] -> Generated text: '985'
+Token ids: [29152]
+
+TTFT: 244.25268173217773 ms
+req_num: 0
+[['979', '981', '983', '985', '']] -> Generated text: '987'
+Token ids: [30515]
+
+TTFT: 223.80685806274414 ms
+req_num: 0
+[['981', '983', '985', '987', '']] -> Generated text: '989'
+Token ids: [31663]
+
+TTFT: 246.03867530822754 ms
+req_num: 0
+[['983', '985', '987', '989', '']] -> Generated text: '991'
+Token ids: [30529]
+
+TTFT: 261.89494132995605 ms
+req_num: 0
+[['985', '987', '989', '991', '']] -> Generated text: '993'
+Token ids: [30537]
+
+TTFT: 261.6620063781738 ms
+req_num: 0
+[['987', '989', '991', '993', '']] -> Generated text: '995'
+Token ids: [28978]
+
+TTFT: 259.50121879577637 ms
+req_num: 0
+[['989', '991', '993', '995', '']] -> Generated text: '997'
+Token ids: [28307]
+
+TTFT: 263.7939453125 ms
+req_num: 0
+[['991', '993', '995', '997', '']] -> Generated text: '999'
+Token ids: [8834]
+
+end.
+ERROR 09-07 00:30:34 [core_client.py:562] Engine core proc EngineCore_0 died unexpectedly, shutting down client.
