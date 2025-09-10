@@ -20,7 +20,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
  
     parser.add_argument('--input_len', type=int, default=1024)
-    parser.add_argument('--output_len', type=int, default=50)
+    parser.add_argument('--output_len', type=int, default=10)
     parser.add_argument('--bs', type=int, default=1)
     #parser.add_argument('--model_path', type=str, default="/mnt/weight/deepseekv3-lite-base-latest")
     parser.add_argument('--model_path', type=str, default="/home/DeepSeek-V2-Lite")
