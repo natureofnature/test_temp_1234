@@ -13,18 +13,19 @@ from transformers import AutoTokenizer
 
 
 os.environ["ASCEND_RT_VISIBLE_DEVICES"]="8,9,10,11,12,13,14,15"
+os.environ["VLLM_ASCEND_ENABLE_MLP_OPTIMIZE"] = "1"
  
 if __name__ == "__main__":
     torch.cuda.empty_cache()
     parser = argparse.ArgumentParser()
  
     parser.add_argument('--input_len', type=int, default=1024)
-    parser.add_argument('--output_len', type=int, default=10)
+    parser.add_argument('--output_len', type=int, default=50)
     parser.add_argument('--bs', type=int, default=1)
     #parser.add_argument('--model_path', type=str, default="/mnt/weight/deepseekv3-lite-base-latest")
     parser.add_argument('--model_path', type=str, default="/home/DeepSeek-V2-Lite")
     parser.add_argument('--tp', type=int, default=2)   # 4 to 8
-    parser.add_argument('--cp', type=int, default=2)   # 4 to 8
+    parser.add_argument('--cp', type=int, default=4)   # 4 to 8
     parser.add_argument('--profiler_dir', type=str, default=None)
     parser.add_argument('-p', '--profiling', action="store_true")
     parser.add_argument('--iter_times', type=int, default=1)
@@ -56,8 +57,8 @@ if __name__ == "__main__":
               gpu_memory_utilization=0.9  # 默认值0.9
               )
  
-    base = 400
-    for i in range(40):
+    base = 600
+    for i in range(5):
         prompts = [
             generate_odd_queue_string(base+i)+" " 
         ]
