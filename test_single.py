@@ -58,7 +58,7 @@ if __name__ == "__main__":
               )
  
     base = 300
-    for i in range(2):
+    for i in range(1):
         prompts = [
             generate_odd_queue_string(base+i)+" " 
         ]
