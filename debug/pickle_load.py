@@ -1,5 +1,7 @@
 import pickle
 import sys
+import numpy
+#numpy.set_printoptions(threshold=sys.maxsize)
 
 # Specify the path to your .pkl file
 file_path = sys.argv[1]  # Replace with the actual path to your file
