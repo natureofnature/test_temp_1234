@@ -57,7 +57,7 @@ if __name__ == "__main__":
               gpu_memory_utilization=0.9  # 默认值0.9
               )
  
-    base = 300
+    base = 323
     for i in range(1):
         prompts = [
             generate_odd_queue_string(base+i)+" " 

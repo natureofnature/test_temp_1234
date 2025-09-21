@@ -1,6 +1,6 @@
 {
 "enabled": true,
-"dir": "debug/compare",
+"dir": "debug/compare_chunked",
 "kv_blocks": 0,
 "out_tokens":0,
 "layers":[0,1]
